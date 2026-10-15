@@ -1,0 +1,173 @@
+---
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects'))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title="All Projects" description="Complete portfolio of development projects" />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <section class="projects-list">
+                <h1>All Projects</h1>
+                <p class="intro">
+                    Complete collection of projects showcasing expertise in systems programming,
+                    web development, AI integration, and embedded systems.
+                </p>
+                
+                <div class="projects-grid">
+                    {projects.map((project) => (
+                        <article class="project-card">
+                            {project.data.heroImage && (
+                                <img src={project.data.heroImage} alt={project.data.title} />
+                            )}
+                            <div class="project-content">
+                                <h2>
+                                    <a href={`/projects/${project.id}/`}>{project.data.title}</a>
+                                </h2>
+                                <p class="description">{project.data.description}</p>
+                                <div class="tech-tags">
+                                    {project.data.tech.map(tech => (
+                                        <span class="tag">{tech}</span>
+                                    ))}
+                                </div>
+                                <div class="project-meta">
+                                    <time datetime={project.data.pubDate.toISOString()}>
+                                        {project.data.pubDate.toLocaleDateString('en-us', {
+                                            year: 'numeric',
+                                            month: 'short',
+                                        })}
+                                    </time>
+                                    <div class="links">
+                                        <a href={project.data.github} target="_blank">GitHub</a>
+                                        {project.data.demo && (
+                                            <a href={project.data.demo} target="_blank">Demo</a>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            </section>
+        </main>
+        <Footer />
+    </body>
+</html>
+
+<style>
+    .projects-list {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    
+    .intro {
+        font-size: 1.2rem;
+        color: #666;
+        margin: 1rem 0 3rem;
+        max-width: 800px;
+    }
+    
+    .projects-grid {
+        display: grid;
+        gap: 2rem;
+    }
+    
+    .project-card {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 2rem;
+        padding: 2rem;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        background: white;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .project-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    
+    .project-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+    
+    .project-content h2 {
+        margin: 0 0 1rem;
+    }
+    
+    .project-content h2 a {
+        color: #0066cc;
+        text-decoration: none;
+    }
+    
+    .project-content h2 a:hover {
+        text-decoration: underline;
+    }
+    
+    .description {
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+    
+    .tech-tags {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin: 1rem 0;
+    }
+    
+    .tag {
+        background: #e8f4ff;
+        color: #0066cc;
+        padding: 0.25rem 0.75rem;
+        border-radius: 4px;
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+    
+    .project-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid #eee;
+    }
+    
+    .project-meta time {
+        color: #999;
+        font-size: 0.9rem;
+    }
+    
+    .links {
+        display: flex;
+        gap: 1rem;
+    }
+    
+    .links a {
+        color: #0066cc;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    @media (max-width: 768px) {
+        .project-card {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

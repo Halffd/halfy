@@ -1,62 +1,359 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage="/blog-placeholder-about.jpg"
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title="About" description="About Arc X - Developer background and expertise" />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <article class="about">
+                <h1>About Me</h1>
+                
+                <section class="intro">
+                    <p class="lead">
+                        Full-stack developer with 10+ years of programming experience,
+                        specializing in systems programming, game engines, AI integration,
+                        and embedded systems.
+                    </p>
+                </section>
+                
+                <section>
+                    <h2>Background</h2>
+                    <p>
+                        Started programming at age 13 with Python, quickly expanding into
+                        C, C++, and assembly language. Self-taught in low-level systems programming,
+                        game development, and computer architecture.
+                    </p>
+                    <p>
+                        Currently pursuing Computer Science degree while working on production
+                        software and freelance projects. Passionate about understanding how
+                        computers work at the lowest levels.
+                    </p>
+                </section>
+                
+                <section>
+                    <h2>Technical Expertise</h2>
+                    
+                    <div class="expertise-grid">
+                        <div class="expertise-card">
+                            <h3>Systems Programming</h3>
+                            <ul>
+                                <li>C, C++ (10+ years)</li>
+                                <li>Assembly (x86, ARM, RISC-V)</li>
+                                <li>OpenGL, SDL2, graphics programming</li>
+                                <li>Custom language implementation (lexer, parser, AST)</li>
+                                <li>Memory management, optimization</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="expertise-card">
+                            <h3>Web & Mobile Development</h3>
+                            <ul>
+                                <li>JavaScript, TypeScript, Python</li>
+                                <li>React, Node.js, Express</li>
+                                <li>React Native, Flutter</li>
+                                <li>Android native (Java)</li>
+                                <li>Firebase, Supabase integration</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="expertise-card">
+                            <h3>AI & Machine Learning</h3>
+                            <ul>
+                                <li>GPT-4 API integration</li>
+                                <li>OCR and image processing</li>
+                                <li>Natural language processing</li>
+                                <li>ML fundamentals (pandas, numpy)</li>
+                                <li>Production chatbot development</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="expertise-card">
+                            <h3>Embedded Systems</h3>
+                            <ul>
+                                <li>Arduino, ESP32, STM32</li>
+                                <li>Firmware development (C/C++)</li>
+                                <li>I2C, SPI, UART protocols</li>
+                                <li>IoT system design</li>
+                                <li>Real-time systems</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2>Notable Projects</h2>
+                    <ul class="projects-list">
+                        <li>
+                            <strong>Custom Game Engine</strong> - Built complete 2D engine in C++/OpenGL
+                            with ECS architecture, physics, and rendering pipeline
+                        </li>
+                        <li>
+                            <strong>AI Chatbot</strong> - Production chatbot serving 500+ users with
+                            multi-modal input (text, images,
+OCR) and GPT-4 integration
+                        </li>
+                        <li>
+                            <strong>Browser Extension</strong> - Enhanced Yomichan (100k+ users) with
+                            custom features and performance optimizations
+                        </li>
+                        <li>
+                            <strong>Custom Programming Language</strong> - Implemented lexer, parser,
+                            AST, and interpreter from scratch
+                        </li>
+                        <li>
+                            <strong>Gentoo Linux</strong> - Compiled entire OS from source, deep system
+                            administration experience
+                        </li>
+                    </ul>
+                </section>
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+                <section>
+                    <h2>Work Approach</h2>
+                    <p>
+                        I believe in understanding systems deeply rather than just using them.
+                        Whether it's building a game engine from scratch, implementing a custom
+                        programming language, or optimizing GPU memory usage, I focus on
+                        fundamentals and best practices.
+                    </p>
+                    <p>
+                        My experience spans from the lowest levels (assembly, firmware) to
+                        high-level abstractions (AI APIs, web frameworks), giving me a unique
+                        perspective on system architecture and optimization.
+                    </p>
+                </section>
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+
+
+                <section>
+                    <h2>Currently Available For</h2>
+                    <ul class="availability">
+                        <li>Freelance development projects</li>
+                        <li>Technical consulting</li>
+                        <li>System architecture design</li>
+                        <li>Performance optimization</li>
+                        <li>Custom software development</li>
+                    </ul>
+                </section>
+
+
+
+                <section class="contact-cta">
+                    <h2>Let's Work Together</h2>
+                    <p>
+                        Interested in working on a project? Have a technical challenge that
+                        needs solving? I'm always open to discussing new opportunities.
+                    </p>
+                    <a href="mailto:your@email.com" class="btn-primary">Get In Touch →</a>
+                </section>
+            </article>
+        </main>
+        <Footer />
+    </body>
+</html>
+
+
+
+<style>
+    .about {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+
+
+    .about h1 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
+
+
+
+    .intro {
+        margin-bottom: 3rem;
+    }
+
+
+
+    .lead {
+        font-size: 1.4rem;
+        line-height: 1.7;
+        color: #555;
+    }
+
+
+
+    section {
+        margin-bottom: 3rem;
+    }
+
+
+
+    section h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        color: #1a1a1a;
+    }
+
+
+
+    section p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #444;
+        margin-bottom: 1rem;
+    }
+
+
+
+    .expertise-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+
+
+
+    .expertise-card {
+        background: #f9f9f9;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 4px solid #0066cc;
+    }
+
+
+
+    .expertise-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        color: #0066cc;
+    }
+
+
+
+    .expertise-card ul {
+        list-style: none;
+        padding: 0;
+    }
+
+
+
+    .expertise-card li {
+        padding: 0.4rem 0;
+        color: #555;
+    }
+
+
+
+    .expertise-card li:before {
+        content: "▹ ";
+        color: #0066cc;
+        font-weight: bold;
+        margin-right: 0.5rem;
+    }
+
+
+
+    .projects-list {
+        list-style: none;
+        padding: 0;
+    }
+
+
+
+    .projects-list li {
+        padding: 1rem 0;
+        border-bottom: 1px solid #eee;
+    }
+
+
+
+    .projects-list li:last-child {
+        border-bottom: none;
+    }
+
+
+
+    .projects-list strong {
+        color: #0066cc;
+        font-size: 1.1rem;
+    }
+
+
+
+    .availability {
+        list-style: none;
+        padding: 0;
+    }
+
+
+
+    .availability li {
+        padding: 0.75rem 0;
+        font-size: 1.1rem;
+    }
+
+
+
+    .availability li:before {
+        content: "✓ ";
+        color: #00cc66;
+        font-weight: bold;
+        margin-right: 0.5rem;
+    }
+
+
+
+    .contact-cta {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 3rem;
+        border-radius: 12px;
+        text-align: center;
+        margin-top: 4rem;
+    }
+
+
+
+    .contact-cta h2 {
+        color: white;
+        margin-bottom: 1rem;
+    }
+
+
+
+    .contact-cta p {
+        color: rgba(255,255,255,0.9);
+        margin-bottom: 2rem;
+        font-size: 1.2rem;
+    }
+
+
+
+    .btn-primary {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: white;
+        color: #764ba2;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: transform 0.2s;
+    }
+
+
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+    }
+</style>

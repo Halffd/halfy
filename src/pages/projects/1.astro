@@ -1,0 +1,235 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+    const projects = await getCollection('projects');
+    return projects.map((project) => ({
+        params: { id: project.id },
+        props: project,
+    }));
+}
+
+type Props = CollectionEntry<'projects'>;
+
+const project = Astro.props;
+const { Content } = await project.render();
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title={project.data.title} description={project.data.description} />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <article class="project-detail">
+                <div class="project-header">
+                    <h1>{project.data.title}</h1>
+                    <p class="subtitle">{project.data.description}</p>
+                    
+                    <div class="meta">
+                        <time datetime={project.data.pubDate.toISOString()}>
+                            {project.data.pubDate.toLocaleDateString('en-us', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric',
+                            })}
+                        </time>
+                        {project.data.updatedDate && (
+                            <span> • Updated {project.data.updatedDate.toLocaleDateString('en-us', {
+                                year: 'numeric',
+                                month: 'long',
+                                day: 'numeric',
+                            })}</span>
+                        )}
+                    </div>
+                    
+                    <div class="tech-stack">
+                        {project.data.tech.map(tech => (
+                            <span class="tech-badge">{tech}</span>
+                        ))}
+                    </div>
+                    
+                    <div class="project-links">
+                        <a href={project.data.github} target="_blank" class="btn-primary">
+                            View on GitHub →
+                        </a>
+                        {project.data.demo && (
+                            <a href={project.data.demo} target="_blank" class="btn-secondary">
+                                Live Demo →
+                            </a>
+                        )}
+                    </div>
+                </div>
+                
+                {project.data.heroImage && (
+                    <img src={project.data.heroImage} alt={project.data.title} class="hero-image" />
+                )}
+                
+                <div class="prose">
+                    <Content />
+                </div>
+                
+                <div class="back-link">
+                    <a href="/projects/">← Back to all projects</a>
+                </div>
+            </article>
+        </main>
+        <Footer />
+    </body>
+</html>
+
+<style>
+    .project-detail {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    
+    .project-header {
+        margin-bottom: 3rem;
+    }
+    
+    .project-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #1a1a1a;
+    }
+    
+    .subtitle {
+        font-size: 1.3rem;
+        color: #666;
+        margin-bottom: 1rem;
+    }
+    
+    .meta {
+        color: #999;
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .tech-stack {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 2rem;
+    }
+    
+    .tech-badge {
+        background: #0066cc;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        font-weight: 600;
+    }
+    
+    .project-links {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .btn-primary, .btn-secondary {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: transform 0.2s;
+    }
+    
+    .btn-primary {
+        background: #0066cc;
+        color: white;
+    }
+    
+    .btn-secondary {
+        background: #f0f0f0;
+        color: #333;
+    }
+    
+    .btn-primary:hover, .btn-secondary:hover {
+        transform: translateY(-2px);
+    }
+    
+    .hero-image {
+        width: 100%;
+        max-height: 500px;
+        object-fit: cover;
+        border-radius: 12px;
+        margin-bottom: 3rem;
+    }
+    
+    .prose {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #333;
+    }
+    
+    .prose :global(h2) {
+        font-size: 1.8rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #1a1a1a;
+    }
+    
+    .prose :global(h3) {
+        font-size: 1.4rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: #1a1a1a;
+    }
+    
+    .prose :global(code) {
+        background: #f5f5f5;
+        padding: 0.2rem 0.4rem;
+        border-radius: 4px;
+        font-size: 0.9em;
+        font-family: 'Courier New', monospace;
+    }
+    
+    .prose :global(pre) {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        padding: 1.5rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 1.5rem 0;
+    }
+    
+    .prose :global(pre code) {
+        background: none;
+        padding: 0;
+        color: inherit;
+    }
+    
+    .prose :global(ul), .prose :global(ol) {
+        margin: 1rem 0;
+        padding-left: 2rem;
+    }
+    
+    .prose :global(li) {
+        margin: 0.5rem 0;
+    }
+    
+    .back-link {
+        margin-top: 4rem;
+        padding-top: 2rem;
+        border-top: 1px solid #eee;
+    }
+    
+    .back-link a {
+        color: #0066cc;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    .back-link a:hover {
+        text-decoration: underline;
+    }
+</style>
